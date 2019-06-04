@@ -12,12 +12,13 @@ gem 'jquery-rails', '4.3.1'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'sqlite3', '1.3.13'
+gem "appengine", "~> 0.4.6"
 
 gem 'rubocop', '~> 0.52.1', require: false
 gem 'rubocop-airbnb'
 
 group :development, :test do
-  gem 'sqlite3', '1.3.13'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails'
   gem 'factory_bot_rails'

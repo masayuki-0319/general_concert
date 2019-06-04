@@ -21,5 +21,10 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  adapter: mysql2
+  pool: 5
+  timeout: 5000
+  username: root
+  password: general
+  database: general_concert_0319
+  socket:   "/cloudsql/general-concert-0319:us-central1:general-concert-0319"
