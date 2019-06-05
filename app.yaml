@@ -7,3 +7,8 @@ env_variables:
 
 beta_settings:
   cloud_sql_instances: general-concert-0319:us-central1:general-concert-0319
+
+steps:
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ["app", "deploy"]
+timeout: "1600s"
