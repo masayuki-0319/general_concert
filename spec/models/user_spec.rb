@@ -1,12 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:user) do
-    User.new(
-      name: 'Test',
-      email: 'test@example.com'
-    )
-  end
+  let(:user) { build(:user) }
+  let(:other_user) { create(:user) }
   let(:valid_addressess) do
     %w(
       user@example.com
@@ -14,6 +10,7 @@ RSpec.describe User, type: :model do
       first.last@foo.jp alice+bob@baz.cn
     )
   end
+  let(:mixed_addresse) { 'Foo@ExAMPle.CoM' }
   let(:invalid_addresses) do
     %w(
       user@example,com
@@ -59,6 +56,15 @@ RSpec.describe User, type: :model do
         user.email = valid_address
         expect(user).to be_valid
       end
+      user.email = mixed_addresse
+      user.save
+      expect(user.email).to eq mixed_addresse.downcase
+    end
+
+    it 'emailを小文字保存の有効性' do
+      user.email = mixed_addresse
+      user.save
+      expect(user.email).to eq mixed_addresse.downcase
     end
 
     it '無効（emailのフォーマット）' do
@@ -69,9 +75,7 @@ RSpec.describe User, type: :model do
     end
 
     it '無効（emailの一意性）' do
-      dup_user = user.dup
-      dup_user.email.upcase!
-      dup_user.save
+      user.email = other_user.email.upcase!
       subject
     end
   end
