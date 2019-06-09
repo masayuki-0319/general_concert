@@ -31,27 +31,27 @@ RSpec.describe User, type: :model do
       expect(user).to be_valid
     end
 
-    it '無効（nameの存在性)' do
+    it 'Name無効（nil時)' do
       user.name = nil
       subject
     end
 
-    it '無効（nameの長さ)' do
+    it 'Name無効（長すぎる時)' do
       user.name = 'a' * 51
       subject
     end
 
-    it '無効（emailの存在性)' do
+    it 'Email無効（nil時)' do
       user.email = nil
       subject
     end
 
-    it '無効（emailの長さ)' do
+    it 'Email無効（長すぎる時)' do
       user.email = 'a' * 256
       subject
     end
 
-    it 'emailのフォーマットの有効性' do
+    it 'Email有効（フォーマットの有効性）' do
       valid_addressess.each do |valid_address|
         user.email = valid_address
         expect(user).to be_valid
@@ -61,21 +61,31 @@ RSpec.describe User, type: :model do
       expect(user.email).to eq mixed_addresse.downcase
     end
 
-    it 'emailを小文字保存の有効性' do
+    it 'Email有効（小文字保存の有効性）' do
       user.email = mixed_addresse
       user.save
       expect(user.email).to eq mixed_addresse.downcase
     end
 
-    it '無効（emailのフォーマット）' do
+    it 'Email無効（フォーマット）' do
       invalid_addresses.each do |invalid_address|
         user.email = invalid_address
         subject
       end
     end
 
-    it '無効（emailの一意性）' do
+    it 'Email無効（一意性）' do
       user.email = other_user.email.upcase!
+      subject
+    end
+
+    it 'Password無効（半角スペース６つ）' do
+      user.password = user.password_confirmation = ' ' * 6
+      subject
+    end
+
+    it 'Password無効（長さが6個未満）' do
+      user.password = user.password_confirmation = 'a' * 5
       subject
     end
   end
