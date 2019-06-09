@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem "appengine", "~> 0.4.6"
 gem 'bootstrap-sass'
+gem 'bcrypt'
 
 gem 'rubocop', '~> 0.52.1', require: false
 gem 'rubocop-airbnb'
