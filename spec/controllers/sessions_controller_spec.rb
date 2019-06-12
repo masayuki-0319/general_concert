@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe SessionsController, type: :controller do
+  before { get :new }
 
-  describe "GET #new" do
+  context "GET #new" do
     it "returns http success" do
-      get :new
       expect(response).to have_http_status(:success)
     end
-  end
 
+    it 'returns new template' do
+      expect(response).to render_template :new
+    end
+  end
 end

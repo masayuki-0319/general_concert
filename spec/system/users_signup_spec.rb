@@ -14,18 +14,20 @@ RSpec.feature 'UsersSignup', type: :system do
     fill_in 'パスワード確認', with: user.password
   end
 
-  scenario 'ユーザ登録＝＞失敗' do
-    fill_in '名前', with: ''
-    expect { subject }.not_to change(User, :count)
-    expect(current_path).to eq signup_path
-    expect(page).to have_title('新規登録')
-    expect(page).to have_css('div#error_explanation', text: 'エラーがあります')
-  end
+  context 'ユーザ登録' do
+    scenario '成功' do
+      expect { subject }.to change(User, :count).by(1)
+      expect(current_path).to eq user_path(User.last)
+      expect(page).to have_content user.name
+      expect(page).to have_css('div.alert-success')
+    end
 
-  scenario 'ユーザ登録＝＞成功' do
-    expect { subject }.to change(User, :count).by(1)
-    expect(current_path).to eq user_path(User.last)
-    expect(page).to have_content user.name
-    expect(page).to have_css('div.alert-success')
+    scenario '失敗' do
+      fill_in '名前', with: ''
+      expect { subject }.not_to change(User, :count)
+      expect(current_path).to eq signup_path
+      expect(page).to have_title('新規登録')
+      expect(page).to have_css('div#error_explanation', text: 'エラーがあります')
+    end
   end
 end
