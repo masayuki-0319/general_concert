@@ -7,3 +7,6 @@ AllCops:
     - 'db/**/*'
     - 'lib/**/*'
     - 'vendor/**/*'
+
+Lint/AssignmentInCondition:
+  Enabled: false

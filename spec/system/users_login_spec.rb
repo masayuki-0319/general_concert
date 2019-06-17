@@ -33,6 +33,11 @@ RSpec.feature 'UsersLogin', type: :system do
       click_button 'ログイン'
       click_on 'ログアウト'
       expect(current_path).to eq root_path
+      expect(page).not_to have_link 'ログアウト'
+      # ２つ目のWindowでログアウト実行時
+      page.driver.submit :delete, '/logout', {}
+      expect(current_path).to eq root_path
+      expect(page).not_to have_link 'ログアウト'
     end
   end
 end
