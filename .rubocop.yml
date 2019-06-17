@@ -10,3 +10,5 @@ AllCops:
 
 Lint/AssignmentInCondition:
   Enabled: false
+Style/TrailingCommaInLiteral:
+  Enabled: false

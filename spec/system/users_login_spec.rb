@@ -11,7 +11,15 @@ RSpec.feature 'UsersLogin', type: :system do
   end
 
   context 'ユーザログイン' do
-    scenario '成功' do
+    scenario '通常成功' do
+      click_button 'ログイン'
+      expect(current_path).to eq user_path(User.last)
+      expect(page).to have_content user.name
+    end
+
+    scenario 'クッキーを保存して成功' do
+      check 'session_remember_me'
+      expect(page).to have_checked_field('このパソコンにログイン情報を保存する。')
       click_button 'ログイン'
       expect(current_path).to eq user_path(User.last)
       expect(page).to have_content user.name
