@@ -62,56 +62,19 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  describe "GET #edit" do
-    before { get :edit, params: { id: signin_user.id } }
-
-    it 'アクセス成功' do
-      expect(response).to have_http_status(:success)
+  # edit及びupdateは，ログイン済みユーザーの検証で実装が困難であるため，基本はSystemSpecでテストする。
+  context '#ログイン済みでない場合' do
+    it 'user#editにアクセス不可' do
+      get :edit, params: { id: signin_user.id }
+      expect(flash[:danger]).to be_present
+      expect(response).to redirect_to login_path
     end
 
-    it '@userの取得' do
-      expect(assigns(:user)).to eq signin_user
-    end
-  end
-
-  describe "PATCH #update" do
-    before { get :edit, params: { id: signin_user.id } }
-
-    context '正常値で編集が成功する場合，' do
-      before do
-        user_params = attributes_for(:user, name: 'Name for After Changing', email: 'chan@ge.com')
-        patch :update, params: { id: signin_user.id, user: user_params }
-      end
-
-      it 'ユーザ情報が更新成功' do
-        expect(signin_user.reload.name).to eq 'Name for After Changing'
-        expect(signin_user.reload.email).to eq 'chan@ge.com'
-      end
-
-      it 'フラッシュメッセージが生成' do
-        expect(flash[:success]).to include '編集成功'
-      end
-
-      it 'ユーザ詳細画面にリダイレクト' do
-        expect(response).to have_http_status 302
-      end
-    end
-
-    context '異常値の場合で編集が失敗する場合，' do
-      before do
-        user_params = attributes_for(:user, name: 'Name for After Changing', email: '@@@@@')
-        patch :update, params: { id: signin_user.id, user: user_params }
-      end
-
-      it 'ユーザ情報が更新失敗' do
-        expect(signin_user.reload.name).not_to eq 'Name for After Changing'
-        expect(signin_user.reload.email).not_to eq 'Email for After Changing'
-      end
-
-      it '登録画面ににリダイレクト' do
-        expect(response).to render_template 'edit'
-        expect(response).to have_http_status 200
-      end
+    it 'user#updateにアクセス不可' do
+      patch :update, params: { id: signin_user.id, user: { name: 'Changing Name' } }
+      expect(flash[:danger]).to be_present
+      expect(signin_user.reload.name).not_to eq 'Changing Name'
+      expect(response).to redirect_to login_path
     end
   end
 end

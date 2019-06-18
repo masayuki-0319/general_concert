@@ -11,4 +11,9 @@ module LoginMacros
     fill_in 'パスワード', with: user.password
     click_button 'ログイン'
   end
+
+  # テストユーザがログアウト
+  def log_out_as(user)
+    click_on 'ログアウト'
+  end
 end
