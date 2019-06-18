@@ -62,7 +62,6 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  # edit及びupdateは，ログイン済みユーザーの検証で実装が困難であるため，基本はSystemSpecでテストする。
   context '#ログイン済みでない場合' do
     it 'user#editにアクセス不可' do
       get :edit, params: { id: signin_user.id }
@@ -75,6 +74,25 @@ RSpec.describe UsersController, type: :controller do
       expect(flash[:danger]).to be_present
       expect(signin_user.reload.name).not_to eq 'Changing Name'
       expect(response).to redirect_to login_path
+    end
+  end
+
+  context '#異なるユーザがログインする場合' do
+    let(:other_user) { create(:user) }
+
+    before do
+      session[:user_id] = other_user.id
+    end
+
+    it 'user#editにアクセス不可' do
+      get :edit, params: { id: signin_user.id }
+      expect(response).to redirect_to root_path
+    end
+
+    it 'user#updateにアクセス不可' do
+      patch :update, params: { id: signin_user.id, user: { name: 'Changing Name' } }
+      expect(signin_user.reload.name).not_to eq 'Changing Name'
+      expect(response).to redirect_to root_path
     end
   end
 end

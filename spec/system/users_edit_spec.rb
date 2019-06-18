@@ -36,19 +36,5 @@ RSpec.feature 'UsersEdit', type: :system do
       expect(current_path).to eq user_path(user)
       expect(page).to have_content 'ユーザー情報編集'
     end
-
-    context '#ログイン済みでない場合' do
-      before { log_out_as(user) }
-
-      it 'user#editにアクセス不可' do
-        visit edit_user_path(user)
-        expect(current_path).to eq root_path
-      end
-
-      it 'user#updateにアクセス不可' do
-        patch user_path(user), params: { id: user.id, user: { name: 'Changing Name' } }
-        expect(current_path).to eq root_path
-      end
-    end
   end
 end
