@@ -80,9 +80,7 @@ RSpec.describe UsersController, type: :controller do
   context '#異なるユーザがログインする場合' do
     let(:other_user) { create(:user) }
 
-    before do
-      session[:user_id] = other_user.id
-    end
+    before { session[:user_id] = other_user.id }
 
     it 'user#editにアクセス不可' do
       get :edit, params: { id: signin_user.id }
@@ -93,6 +91,14 @@ RSpec.describe UsersController, type: :controller do
       patch :update, params: { id: signin_user.id, user: { name: 'Changing Name' } }
       expect(signin_user.reload.name).not_to eq 'Changing Name'
       expect(response).to redirect_to root_path
+    end
+  end
+
+  context 'フレンドリーフォワーディング' do
+    it 'ログインページへ遷移し，Session情報が保存される' do
+      get :edit, params: { id: signin_user.id }
+      expect(response).to redirect_to login_path
+      expect(session[:forwarding_url]).to eq edit_user_url(signin_user)
     end
   end
 end
