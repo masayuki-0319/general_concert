@@ -5,6 +5,16 @@ RSpec.describe UsersController, type: :controller do
   let(:valid_user) { attributes_for(:user) }
   let(:invalid_user) { attributes_for(:user, name: nil) }
 
+  describe "GET #index" do
+    context '未ログインの場合' do
+      before { get :index }
+
+      it 'アクセス失敗してリダイレクト' do
+        expect(response).to redirect_to login_path
+      end
+    end
+  end
+
   describe "GET #show" do
     before { get :show, params: { id: signin_user.id } }
 
