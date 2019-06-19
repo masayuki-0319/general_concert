@@ -16,6 +16,8 @@ gem "appengine", "~> 0.4.6"
 gem 'bootstrap-sass'
 gem 'bcrypt'
 gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 gem 'rubocop', '~> 0.52.1', require: false
 gem 'rubocop-airbnb'
