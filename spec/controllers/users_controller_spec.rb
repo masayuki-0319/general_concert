@@ -72,6 +72,34 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
+  describe 'DELETE #destroy' do
+    let!(:admin_user) { create(:admin_user) }
+    let!(:other_user) { create(:user) }
+    let!(:another_user) { create(:user) }
+
+    context '未ログインのユーザが削除する場合' do
+      it '削除が失敗' do
+        expect { delete :destroy, params: { id: other_user.id } }.not_to change(User, :count)
+      end
+    end
+
+    context '管理者権限を持たないユーザが削除する場合' do
+      before { session[:user_id] = other_user.id }
+
+      it '削除が失敗' do
+        expect { delete :destroy, params: { id: another_user.id } }.not_to change(User, :count)
+      end
+    end
+
+    context '管理者権限を持つユーザが削除する場合' do
+      before { session[:user_id] = admin_user.id }
+
+      it '削除が成功' do
+        expect { delete :destroy, params: { id: other_user.id } }.to change(User, :count).by(-1)
+      end
+    end
+  end
+
   context '#ログイン済みでない場合' do
     it 'user#editにアクセス不可' do
       get :edit, params: { id: signin_user.id }
