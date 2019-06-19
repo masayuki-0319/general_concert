@@ -104,11 +104,21 @@ RSpec.describe UsersController, type: :controller do
     end
   end
 
-  context 'フレンドリーフォワーディング' do
+  context '#フレンドリーフォワーディング' do
     it 'ログインページへ遷移し，Session情報が保存される' do
       get :edit, params: { id: signin_user.id }
       expect(response).to redirect_to login_path
       expect(session[:forwarding_url]).to eq edit_user_url(signin_user)
+    end
+  end
+
+  context '#管理者権限' do
+    before { session[:user_id] = signin_user.id }
+
+    it '変更不可' do
+      expect(signin_user.admin).to be_falsey
+      patch :update, params: { id: signin_user.id, user: { admin: true } }
+      expect(signin_user.admin).to be_falsey
     end
   end
 end
