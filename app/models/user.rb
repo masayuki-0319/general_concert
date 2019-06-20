@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :music_posts, dependent: :destroy
   attr_accessor :remember_token
   validates :name, presence: true, length: { maximum: 50 }
   before_save { email.downcase! }
