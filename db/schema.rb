@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_19_043236) do
+ActiveRecord::Schema.define(version: 2019_06_20_001235) do
+
+  create_table "music_posts", force: :cascade do |t|
+    t.text "iframe"
+    t.string "title"
+    t.string "user"
+    t.string "references"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index [nil, "created_at"], name: "index_music_posts_on_user_id_and_created_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

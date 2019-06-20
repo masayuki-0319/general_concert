@@ -1,0 +1,2 @@
+class MusicPost < ApplicationRecord
+end
