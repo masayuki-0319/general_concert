@@ -15,11 +15,12 @@ ActiveRecord::Schema.define(version: 2019_06_20_001235) do
   create_table "music_posts", force: :cascade do |t|
     t.text "iframe"
     t.string "title"
-    t.string "user"
+    t.integer "user_id"
     t.string "references"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index [nil, "created_at"], name: "index_music_posts_on_user_id_and_created_at"
+    t.index ["user_id", "created_at"], name: "index_music_posts_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_music_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

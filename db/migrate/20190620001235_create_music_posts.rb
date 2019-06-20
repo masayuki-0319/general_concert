@@ -3,7 +3,7 @@ class CreateMusicPosts < ActiveRecord::Migration[5.2]
     create_table :music_posts do |t|
       t.text :iframe
       t.string :title
-      t.string :user
+      t.references :user, foreign_key: true
       t.string :references
 
       t.timestamps
