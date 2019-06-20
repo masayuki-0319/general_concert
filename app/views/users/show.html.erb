@@ -8,4 +8,13 @@
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.music_posts.present? %>
+      <h3>投稿数： (<%= @user.music_posts.count %>)</h3>
+      <ol class="music_posts">
+        <%= render @music_posts %>
+      </ol>
+      <%= will_paginate @music_posts %>
+    <% end %>
+  </div>
 </div>

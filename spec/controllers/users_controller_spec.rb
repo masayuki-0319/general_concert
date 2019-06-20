@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  let(:signin_user) { create(:user) }
+  let!(:signin_user) { create(:user) }
   let(:valid_user) { attributes_for(:user) }
   let(:invalid_user) { attributes_for(:user, name: nil) }
 
@@ -16,6 +16,8 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "GET #show" do
+    let!(:music) { 2.times { create(:music_post, user_id: signin_user.id) } }
+
     before { get :show, params: { id: signin_user.id } }
 
     it 'アクセス成功' do
@@ -24,6 +26,10 @@ RSpec.describe UsersController, type: :controller do
 
     it '@userの取得' do
       expect(assigns(:user)).to eq signin_user
+    end
+
+    it '@music_postsの取得' do
+      expect(assigns(:music_posts).count).to eq signin_user.music_posts.count
     end
   end
 

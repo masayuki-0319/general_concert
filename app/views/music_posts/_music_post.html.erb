@@ -1,0 +1,8 @@
+<li id="music_post-<%= music_post.id %>">
+  <%= link_to gravatar_for(music_post.user, size: 50), music_post.user %>
+  <span class="user"><%= link_to music_post.user.name, music_post.user %></span>
+  <span class="timestamp">
+    投稿日時 <%= time_ago_in_words(music_post.created_at) %> ago.
+  </span>
+  <span class="music_post"><%= music_post.iframe.html_safe %></span>
+</li>
