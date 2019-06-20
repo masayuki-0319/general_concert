@@ -12,3 +12,5 @@ Lint/AssignmentInCondition:
   Enabled: false
 Style/TrailingCommaInLiteral:
   Enabled: false
+Metrics/LineLength:
+  Enabled: false
