@@ -1,6 +1,9 @@
 class StaticPagesController < ApplicationController
   def home
-    @music_post = current_user.music_posts.build if logged_in?
+    if logged_in?
+      @music_post = current_user.music_posts.build
+      @feed_items = current_user.feed.paginate(page: params[:page]).includes(:user)
+    end
   end
 
   def about

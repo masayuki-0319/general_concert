@@ -3,6 +3,10 @@
 <% if logged_in? %>
   <div class="row">
     <%= render 'sidebar' %>
+    <div class="col-md-8">
+      <h3>投稿動画一覧</h3>
+      <%= render 'shared/feed' %>
+    </div>
   </div>
 <% else %>
   <%= render 'before_login' %>

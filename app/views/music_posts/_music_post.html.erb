@@ -1,8 +1,12 @@
 <li id="music_post-<%= music_post.id %>">
   <%= link_to gravatar_for(music_post.user, size: 50), music_post.user %>
-  <span class="user"><%= link_to music_post.user.name, music_post.user %></span>
+  <span class="user"><%= link_to music_post.user.name, music_post.user %><br/ ></span>
   <span class="timestamp">
-    投稿日時 <%= time_ago_in_words(music_post.created_at) %> ago.
+    投稿日時：<%= time_ago_in_words(music_post.created_at) %> ago. <br/ >
+    動画タイトル：<%= music_post.title %>
+    <% if current_user?(music_post.user) %>
+      ＜<%= link_to '動画を削除', music_post, method: :delete, data: { confirm: '本当に削除しますか？' } %>＞
+    <% end %>
   </span>
   <span class="music_post"><%= music_post.iframe.html_safe %></span>
 </li>
