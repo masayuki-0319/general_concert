@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
-  let!(:signin_user) { create(:user) }
+  let!(:user) { create(:user) }
   let(:valid_user) { attributes_for(:user) }
   let(:invalid_user) { attributes_for(:user, name: nil) }
 
@@ -16,20 +16,20 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "GET #show" do
-    let!(:music) { 2.times { create(:music_post, user_id: signin_user.id) } }
+    let!(:music) { 2.times { create(:music_post, user_id: user.id) } }
 
-    before { get :show, params: { id: signin_user.id } }
+    before { get :show, params: { id: user.id } }
 
     it 'アクセス成功' do
       expect(response).to have_http_status(:success)
     end
 
     it '@userの取得' do
-      expect(assigns(:user)).to eq signin_user
+      expect(assigns(:user)).to eq user
     end
 
     it '@music_postsの取得' do
-      expect(assigns(:music_posts).count).to eq signin_user.music_posts.count
+      expect(assigns(:music_posts).count).to eq user.music_posts.count
     end
   end
 
@@ -107,17 +107,31 @@ RSpec.describe UsersController, type: :controller do
   end
 
   context '#ログイン済みでない場合' do
-    it 'user#editにアクセス不可' do
-      get :edit, params: { id: signin_user.id }
-      expect(flash[:danger]).to be_present
-      expect(response).to redirect_to login_path
+    context 'ユーザ編集関係' do
+      it 'user#editにアクセス不可' do
+        get :edit, params: { id: user.id }
+        expect(flash[:danger]).to be_present
+        expect(response).to redirect_to login_path
+      end
+
+      it 'user#updateにアクセス不可' do
+        patch :update, params: { id: user.id, user: { name: 'Changing Name' } }
+        expect(flash[:danger]).to be_present
+        expect(user.reload.name).not_to eq 'Changing Name'
+        expect(response).to redirect_to login_path
+      end
     end
 
-    it 'user#updateにアクセス不可' do
-      patch :update, params: { id: signin_user.id, user: { name: 'Changing Name' } }
-      expect(flash[:danger]).to be_present
-      expect(signin_user.reload.name).not_to eq 'Changing Name'
-      expect(response).to redirect_to login_path
+    context 'フォローページ関係' do
+      it 'user#followingにアクセス不可' do
+        get :following, params: { id: user.id }
+        expect(response).to redirect_to login_path
+      end
+
+      it 'user#followersにアクセス不可' do
+        get :followers, params: { id: user.id }
+        expect(response).to redirect_to login_path
+      end
     end
   end
 
@@ -127,32 +141,32 @@ RSpec.describe UsersController, type: :controller do
     before { session[:user_id] = other_user.id }
 
     it 'user#editにアクセス不可' do
-      get :edit, params: { id: signin_user.id }
+      get :edit, params: { id: user.id }
       expect(response).to redirect_to root_path
     end
 
     it 'user#updateにアクセス不可' do
-      patch :update, params: { id: signin_user.id, user: { name: 'Changing Name' } }
-      expect(signin_user.reload.name).not_to eq 'Changing Name'
+      patch :update, params: { id: user.id, user: { name: 'Changing Name' } }
+      expect(user.reload.name).not_to eq 'Changing Name'
       expect(response).to redirect_to root_path
     end
   end
 
   context '#フレンドリーフォワーディング' do
     it 'ログインページへ遷移し，Session情報が保存される' do
-      get :edit, params: { id: signin_user.id }
+      get :edit, params: { id: user.id }
       expect(response).to redirect_to login_path
-      expect(session[:forwarding_url]).to eq edit_user_url(signin_user)
+      expect(session[:forwarding_url]).to eq edit_user_url(user)
     end
   end
 
   context '#管理者権限' do
-    before { session[:user_id] = signin_user.id }
+    before { session[:user_id] = user.id }
 
     it '変更不可' do
-      expect(signin_user.admin).to be_falsey
-      patch :update, params: { id: signin_user.id, user: { admin: true } }
-      expect(signin_user.admin).to be_falsey
+      expect(user.admin).to be_falsey
+      patch :update, params: { id: user.id, user: { admin: true } }
+      expect(user.admin).to be_falsey
     end
   end
 end
