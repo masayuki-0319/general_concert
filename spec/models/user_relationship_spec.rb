@@ -1,5 +1,41 @@
 require 'rails_helper'
 
 RSpec.describe UserRelationship, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:user) { create(:user) }
+  let(:other_user) { create(:user) }
+  let(:relation) { create(:user_relationship, follower_id: user.id, followed_id: other_user.id) }
+
+  context '#Validation' do
+    it '全属性の有効性' do
+      relation.valid?
+      expect(relation).to be_valid
+    end
+
+    it 'Followerの存在性' do
+      relation.follower_id = nil
+      relation.valid?
+      expect(relation).not_to be_valid
+    end
+
+    it 'Followedの存在性' do
+      relation.followed_id = nil
+      relation.valid?
+      expect(relation).not_to be_valid
+    end
+  end
+
+  context '#Follow' do
+    before { user.follow(other_user) }
+
+    it 'ユーザをフォロー' do
+      expect(user.following?(other_user)).to be_truthy
+      expect(other_user.followers.include?(user)).to be_truthy
+    end
+
+    it 'ユーザをフォロー解除' do
+      user.unfollow(other_user)
+      expect(user.following?(other_user)).to be_falsy
+      expect(other_user.followers.include?(user)).to be_falsy
+    end
+  end
 end

@@ -1,5 +1,13 @@
 class User < ApplicationRecord
   has_many :music_posts, dependent: :destroy
+  has_many :active_user_relationships, class_name: 'UserRelationship',
+                                       foreign_key: 'follower_id',
+                                       dependent: :destroy
+  has_many :following, through: :active_user_relationships, source: :followed
+  has_many :passive_user_relationships, class_name: 'UserRelationship',
+                                        foreign_key: 'followed_id',
+                                        dependent: :destroy
+  has_many :followers, through: :passive_user_relationships, source: :follower
   attr_accessor :remember_token
   validates :name, presence: true, length: { maximum: 50 }
   before_save { email.downcase! }
@@ -38,5 +46,17 @@ class User < ApplicationRecord
 
   def feed
     MusicPost.where('user_id = ?', id)
+  end
+
+  def follow(other_user)
+    following << other_user
+  end
+
+  def unfollow(other_user)
+    active_user_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    following.include?(other_user)
   end
 end
