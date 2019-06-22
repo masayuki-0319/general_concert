@@ -89,4 +89,18 @@ RSpec.describe User, type: :model do
       subject
     end
   end
+
+  context '#FollowFeed' do
+    let!(:user) { create(:user) }
+    let!(:other_user) { create(:user) }
+    let!(:another_user) { create(:user) }
+    let!(:music) { create(:music_post, user_id: user.id) }
+    let!(:other_music) { create(:music_post, user_id: other_user.id) }
+    let!(:another_music) { create(:music_post, user_id: another_user.id) }
+    let!(:user_relationship) { create(:user_relationship, follower_id: user.id, followed_id: other_user.id) }
+
+    it '自分とFollowerの投稿のみを所有する。' do
+      expect(user.feed).to match_array [music, other_music]
+    end
+  end
 end
