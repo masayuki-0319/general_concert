@@ -19,6 +19,7 @@ gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'webpacker', github: 'rails/webpacker'
+gem 'foreman'
 
 gem 'rubocop', '~> 0.52.1', require: false
 gem 'rubocop-airbnb'

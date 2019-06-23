@@ -67,4 +67,7 @@ Rails.application.configure do
     Bullet.console = true # ブラウザのコンソールログに記録
     Bullet.rails_logger = true # Railsログに出力
   end
+
+  # Webpackerの自動化設定
+  config.x.webpacker[:dev_server_host] = "http://localhost:8080"
 end
