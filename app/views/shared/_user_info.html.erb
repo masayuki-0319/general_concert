@@ -1,4 +1,11 @@
-<%= link_to gravatar_for(current_user, size: 50), current_user %>
-<h1><%= current_user.name %></h1>
-<span><%= link_to "プロフィール", current_user %></span>
-<span><%= current_user.music_posts.count %>件</span>
+<aside class="col-md-4">
+  <section class="user_info">
+    <h1>
+      <%= gravatar_for @user %>
+      <%= @user.name %>
+    </h1>
+  </section>
+  <section>
+    <%= render 'shared/stats' %>
+  </section>
+</aside>
