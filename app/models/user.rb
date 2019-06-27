@@ -1,5 +1,8 @@
 class User < ApplicationRecord
   has_many :music_posts, dependent: :destroy
+  has_many :music_likes, class_name: 'MusicLike',
+                         foreign_key: 'liker_id',
+                         dependent: :destroy
   has_many :active_user_relationships, class_name: 'UserRelationship',
                                        foreign_key: 'follower_id',
                                        dependent: :destroy

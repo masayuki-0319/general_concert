@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_21_233820) do
+ActiveRecord::Schema.define(version: 2019_06_27_215809) do
+
+  create_table "music_likes", force: :cascade do |t|
+    t.integer "liker_id"
+    t.integer "music_post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["liker_id", "music_post_id"], name: "index_music_likes_on_liker_id_and_music_post_id", unique: true
+    t.index ["music_post_id"], name: "index_music_likes_on_music_post_id"
+  end
 
   create_table "music_posts", force: :cascade do |t|
     t.text "iframe"
