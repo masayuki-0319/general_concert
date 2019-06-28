@@ -1,10 +1,10 @@
 <% if user = @user || current_user %>
-<aside class="col-md-4">
-  <section class="user_info">
-    <%= link_to gravatar_for(user, size: 50), user %>
-    <h1><%= user.name %></h1>
-    <span><%= link_to "プロフィール", current_user %></span>
-    <span>投稿数：<%= current_user.music_posts.count %>件</span>
-  </section>
-</aside>
+  <aside class="col-md-4">
+    <section class="user_info">
+      <%= link_to gravatar_for(user, size: 50), user %>
+      <h1><%= user.name %></h1>
+      <span><%= link_to "プロフィール", current_user %></span>
+      <span>投稿数：<%= current_user.music_posts.count %>件</span>
+    </section>
+  </aside>
 <% end %>

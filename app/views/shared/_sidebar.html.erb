@@ -5,7 +5,9 @@
   <section class="stats">
     <%= render 'shared/stats' %>
   </section>
-  <section class="music_post_form">
-    <%= render 'shared/music_post_form' %>
-  </section>
+  <% if controller.controller_name == 'static_pages' %>
+    <section class="music_post_form">
+      <%= render 'shared/music_post_form' %>
+    </section>
+  <% end %>
 </aside>
