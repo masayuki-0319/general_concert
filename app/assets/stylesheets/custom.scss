@@ -288,3 +288,16 @@ span.picture {
     border: 0;
   }
 }
+
+/* ボタン :[btn]の色が動作しないため追加 */
+.btn-secondary {
+  @include button-variant($btn-default-color, #BBBBBB, $btn-default-border);
+}
+
+.like-btn {
+  color: #8899a6;
+}
+
+.like-btn-unlike {
+  color: #ff2581;
+}

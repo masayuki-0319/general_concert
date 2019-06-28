@@ -2,6 +2,11 @@ class MusicPostsController < ApplicationController
   before_action :logged_in_user,  only: [:create, :destroy]
   before_action :correct_user,    only: [:destroy]
 
+  def show
+    @music_post = MusicPost.find(params[:id])
+    @user = User.find(@music_post.user_id)
+  end
+
   def create
     @music_post = current_user.music_posts.build(music_post_params)
     if @music_post.save

@@ -12,6 +12,6 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :music_posts,        only: [:create, :destroy]
+  resources :music_posts,        only: [:show, :create, :destroy]
   resources :user_relationships, only: [:create, :destroy]
 end
