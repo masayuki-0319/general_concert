@@ -1,3 +1,5 @@
-<%= link_to "/music_posts/#{music_post.id}/destroy", { method: 'post' }, remote: true do %>
-  <span class="fa fa-heart like-btn-like"></span>
+<%= form_with model: current_user.music_likes.find_by(music_post_id: music_post.id),
+              html: { method: :delete }, remote: true do |f| %>
+  <div><%= hidden_field_tag :music_post_id, music_post.id %></div>
+  <%= f.submit "いいね！解除", class: "btn btn-secondary" %>
 <% end %>

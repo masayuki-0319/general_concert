@@ -64,18 +64,18 @@ class User < ApplicationRecord
     following.include?(other_user)
   end
 
-  # 動画いいね！機能
+  # 動画いいね！機能：未使用
   def like(music_post)
-    music_post_likes.create(music_post_id: music_post.id)
+    music_likes.create(music_post_id: music_post.id)
   end
 
-  # 動画いいね！機能
+  # 動画いいね！機能：未使用
   def unlike(music_post)
-    music_post_likes.find_by(music_post_id: music_post.id).destroy
+    music_likes.find_by(music_post_id: music_post.id).destroy
   end
 
   # 動画いいね！機能
   def liking?(music_post)
-    !music_likes.find_by(id: music_post.id).nil?
+    !music_likes.find_by(music_post_id: music_post.id).nil?
   end
 end

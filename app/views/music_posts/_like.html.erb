@@ -1,3 +1,4 @@
-<%= link_to "/music_posts/#{music_post.id}/create", { method: 'post' }, remote: true do %>
-  <span class="fa fa-heart like-btn-unlike"></span>
+<%= form_with model: current_user.music_likes.build, remote: true do |f| %>
+  <div><%= hidden_field_tag :music_post_id, music_post.id %></div>
+  <%= f.submit "いいね！", class: "btn btn-primary" %>
 <% end %>
