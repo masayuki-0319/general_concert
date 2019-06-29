@@ -1,7 +1,7 @@
 <span id="like_form">
-  <% if current_user.liking?(@music_post) %>
-    <%= render 'music_posts/unlike' %>
+  <% if current_user.liking?(music_post) %>
+    <%= render partial: 'music_posts/unlike', locals: { music_post: music_post } %>
   <% else %>
-    <%= render 'music_posts/like' %>
+    <%= render partial: 'music_posts/like', locals: { music_post: music_post } %>
   <% end %>
 </span>

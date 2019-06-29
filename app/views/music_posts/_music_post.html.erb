@@ -9,13 +9,7 @@
   <% if current_user?(music_post.user) %>
     ＜<%= link_to '動画を削除', music_post, method: :delete, data: { confirm: '本当に削除しますか？' } %>＞
   <% else %>
-    <span id="like_form">
-      <% if current_user.liking?(music_post) %>
-        <%= render partial: 'music_posts/unlike', locals: { music_post: music_post } %>
-      <% else %>
-        <%= render partial: 'music_posts/like', locals: { music_post: music_post } %>
-      <% end %>
-    </span>
+    <%= render partial: 'music_posts/like_form', locals: { music_post: music_post } %>
   <% end %>
   </div>
   <span class="music_post"><%= music_post.iframe.html_safe %></span>
