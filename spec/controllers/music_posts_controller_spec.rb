@@ -16,8 +16,7 @@ RSpec.describe MusicPostsController, type: :controller do
       end
 
       it 'TOPページへリダイレクト' do
-        subject
-        expect(response).to redirect_to root_path
+        expect(subject).to redirect_to root_path
       end
     end
 
@@ -29,8 +28,7 @@ RSpec.describe MusicPostsController, type: :controller do
       end
 
       it 'ログインページへリダイレクト' do
-        subject
-        expect(response).to redirect_to login_path
+        expect(subject).to redirect_to login_path
       end
     end
   end
@@ -44,8 +42,7 @@ RSpec.describe MusicPostsController, type: :controller do
       end
 
       it 'トップページへリダイレクト' do
-        subject
-        expect(response).to redirect_to root_path
+        expect(subject).to redirect_to root_path
       end
     end
 
@@ -57,8 +54,7 @@ RSpec.describe MusicPostsController, type: :controller do
       end
 
       it 'ログインページへリダイレクト' do
-        subject
-        expect(response).to redirect_to login_path
+        expect(subject).to redirect_to login_path
       end
     end
   end

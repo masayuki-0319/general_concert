@@ -59,8 +59,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it 'ユーザ詳細画面にリダイレクト' do
-        subject
-        expect(response).to redirect_to(User.last)
+        expect(subject).to redirect_to(User.last)
       end
     end
 
@@ -72,8 +71,7 @@ RSpec.describe UsersController, type: :controller do
       end
 
       it '登録画面ににリダイレクト' do
-        subject
-        expect(response).to render_template 'new'
+        expect(subject).to render_template 'new'
       end
     end
   end

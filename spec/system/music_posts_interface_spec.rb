@@ -6,9 +6,7 @@ RSpec.feature 'MusicPostInterface', type: :system do
   let!(:music) { create(:music_post, user_id: user.id) }
   let!(:other_music) { create(:music_post, user_id: other_user.id) }
 
-  background do
-    log_in_as(user)
-  end
+  background { log_in_as(user) }
 
   scenario 'ユーザが動画を投稿する。' do
     visit root_path

@@ -3,11 +3,11 @@ class MusicLikesController < ApplicationController
 
   def create
     current_user.like(MusicPost.find(params[:music_post_id]))
-    redirect_to request.referrer
+    redirect_to request.referrer || root_path
   end
 
   def destroy
     current_user.unlike(MusicPost.find(params[:music_post_id]))
-    redirect_to request.referrer
+    redirect_to request.referrer || root_path
   end
 end
