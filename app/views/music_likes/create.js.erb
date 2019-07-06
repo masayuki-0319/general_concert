@@ -1,0 +1,5 @@
+$("#like_form-<%= @music_post_id.id %>").html
+  (
+    "<%= escape_javascript(render partial:'music_posts/unlike', locals: { music_post: @music_post_id }) %>"
+  );
+$("#like").html('<%= current_user.music_likes.count %>');
