@@ -3,9 +3,9 @@
 <% if logged_in? %>
   <div class="row">
     <%= render 'shared/sidebar' %>
-    <div class="col-md-8">
+    <div class="col-md-8" id="microposts">
       <h3>投稿動画一覧</h3>
-      <%= render 'shared/feed' %>
+      <%= render 'shared/feed', feed_items: @feed_items  %>
     </div>
   </div>
 <% else %>

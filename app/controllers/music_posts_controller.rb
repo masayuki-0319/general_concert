@@ -11,7 +11,10 @@ class MusicPostsController < ApplicationController
     @music_post = current_user.music_posts.build(music_post_params)
     if @music_post.save
       flash[:success] = '投稿を完了しました。'
-      redirect_to root_path
+      respond_to do |format|
+        format.html { redirect_to root_path }
+        format.js
+      end
     else
       @feed_items = []
       render 'static_pages/home'
