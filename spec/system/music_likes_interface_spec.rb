@@ -11,14 +11,18 @@ RSpec.feature 'MusicLikeInterface', type: :system do
   scenario '他のユーザのページで動画をいいね！する。' do
     visit user_path(other_user)
     expect(page).not_to have_button 'いいね！解除'
+    expect(page).to have_selector "#like-#{other_user.id}", text: other_user.music_likes.count
     click_on 'いいね！'
     expect(page).to have_button 'いいね！解除'
+    expect(page).to have_selector "#like-#{other_user.id}", text: other_user.music_likes.count
   end
 
   scenario '自分のFeedで動画をいいね！する。' do
     visit root_path
     expect(page).not_to have_button 'いいね！解除'
+    expect(page).to have_selector "#like-#{user.id}", text: user.music_likes.count
     click_on 'いいね！'
     expect(page).to have_button 'いいね！解除'
+    expect(page).to have_selector "#like-#{user.id}", text: user.music_likes.count
   end
 end
