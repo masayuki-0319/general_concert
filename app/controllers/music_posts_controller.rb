@@ -24,7 +24,10 @@ class MusicPostsController < ApplicationController
   def destroy
     @music_post.destroy
     flash[:success] = '動画を削除しました。'
-    redirect_to request.referrer || root_path
+    respond_to do |format|
+      format.html { redirect_to request.referrer || root_path }
+      format.js
+    end
   end
 
   private

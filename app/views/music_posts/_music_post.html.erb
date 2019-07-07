@@ -7,7 +7,7 @@
   </span>
   <div class="col-2 col-md-4">
   <% if current_user?(music_post.user) %>
-    ＜<%= link_to '動画を削除', music_post, method: :delete, data: { confirm: '本当に削除しますか？' } %>＞
+    <%= link_to '動画を削除', music_post, method: :delete, remote: true, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger delete' %>
   <% else %>
     <%= render partial: 'music_posts/like_form', locals: { music_post: music_post } %>
   <% end %>
