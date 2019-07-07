@@ -3,8 +3,8 @@ class MusicPostsController < ApplicationController
   before_action :correct_user,    only: [:destroy]
 
   def index
-    @q = MusicPost.ransack(params[:q]).result(distinct: true).includes(:user)
-    @feed_items = @q.paginate(page: params[:page], per_page: 10)
+    @q = MusicPost.ransack(params[:q])
+    @feed_items = @q.result(distinct: true).paginate(page: params[:page], per_page: 10).includes(:user)
   end
 
   def show
