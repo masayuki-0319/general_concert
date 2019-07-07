@@ -1,6 +1,11 @@
 class MusicPostsController < ApplicationController
-  before_action :logged_in_user,  only: [:create, :destroy]
+  before_action :logged_in_user,  only: [:index, :show, :create, :destroy]
   before_action :correct_user,    only: [:destroy]
+
+  def index
+    @q = MusicPost.ransack(params[:q]).result(distinct: true).includes(:user)
+    @feed_items = @q.paginate(page: params[:page], per_page: 10)
+  end
 
   def show
     @music_post = MusicPost.find(params[:id])
