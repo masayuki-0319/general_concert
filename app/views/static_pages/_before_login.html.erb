@@ -6,3 +6,23 @@
 
   <%= link_to "今すぐ登録する！", signup_path, class: "btn btn-lg btn-primary" %>
 </div>
+
+<!-- FacebookLogin(Developersから転記) -->
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1087661018101570',
+      xfbml      : true,
+      version    : 'v3.3'
+    });
+    FB.AppEvents.logPageView();
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
