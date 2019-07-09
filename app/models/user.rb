@@ -27,9 +27,12 @@ class User < ApplicationRecord
     uid = auth[:uid]
     email = auth[:info][:email]
     name = auth[:info][:name]
+    password = 'password'
     find_or_create_by(provider: provider, uid: uid) do |user|
       user.email = email
       user.name = name
+      user.password = password
+      user.password_confirmation = password
     end
   end
 
