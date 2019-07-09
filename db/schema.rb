@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_09_045940) do
+ActiveRecord::Schema.define(version: 2019_07_09_223719) do
+
+  create_table "music_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "commenter_id"
+    t.integer "music_post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["music_post_id"], name: "index_music_comments_on_music_post_id"
+  end
 
   create_table "music_likes", force: :cascade do |t|
     t.integer "liker_id"
