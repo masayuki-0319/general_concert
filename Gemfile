@@ -23,6 +23,7 @@ gem 'foreman'
 gem 'ransack'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'dotenv-rails'
 
 gem 'rubocop', '~> 0.52.1', require: false
 gem 'rubocop-airbnb'
