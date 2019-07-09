@@ -21,6 +21,18 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
+  # Omniauth
+  def self.find_or_create_from_auth(auth)
+    provider = auth[:provider]
+    uid = auth[:uid]
+    email = auth[:info][:email]
+    name = auth[:info][:name]
+    find_or_create_by(provider: provider, uid: uid) do |user|
+      user.email = email
+      user.name = name
+    end
+  end
+
   def User.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
