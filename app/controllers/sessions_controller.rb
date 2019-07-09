@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
     auth = request.env['omniauth.auth']
     if auth.present?
       user = User.find_or_create_from_auth(auth)
+      log_in user
     else
       user = User.find_by(email: params[:session][:email].downcase)
       unless user && user.authenticate(params[:session][:password])
@@ -13,9 +14,9 @@ class SessionsController < ApplicationController
         render 'new'
         return
       end
+      log_in user
+      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
     end
-    log_in user
-    params[:session][:remember_me] == '1' ? remember(user) : forget(user)
     redirect_to root_path
   end
 
