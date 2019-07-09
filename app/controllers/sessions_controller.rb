@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if auth.present?
       user = User.find_or_create_from_auth(auth)
       log_in user
-      flash[:success] = "#{auth[:provider]}ログインしました。"
+      flash[:success] = "#{auth[:provider].capitalize}ログインしました。"
     else
       user = User.find_by(email: params[:session][:email].downcase)
       unless user && user.authenticate(params[:session][:password])
@@ -19,7 +19,7 @@ class SessionsController < ApplicationController
       params[:session][:remember_me] == '1' ? remember(user) : forget(user)
       flash[:success] = 'ログインしました。'
     end
-    redirect_to root_path
+    redirect_to user
   end
 
   def failure
