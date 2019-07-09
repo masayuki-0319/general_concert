@@ -4,7 +4,7 @@ class User < ApplicationRecord
                          foreign_key: 'liker_id',
                          dependent: :destroy
   has_many :music_comments, class_name: 'MusicComment',
-                            foreign_key: 'commneter_id',
+                            foreign_key: 'commenter_id',
                             dependent: :destroy
   has_many :active_user_relationships, class_name: 'UserRelationship',
                                        foreign_key: 'follower_id',
