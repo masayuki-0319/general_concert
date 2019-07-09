@@ -21,14 +21,10 @@ RSpec.describe User, type: :model do
   end
 
   context '#Validation' do
-    subject do
-      user.valid?
-      expect(user).not_to be_valid
-    end
+    subject { expect(user.valid?).to be_falsy }
 
     it '全属性の有効性' do
-      user.valid?
-      expect(user).to be_valid
+      expect(user.valid?).to be_truthy
     end
 
     it 'Name無効（nil時)' do
@@ -54,7 +50,7 @@ RSpec.describe User, type: :model do
     it 'Email有効（フォーマットの有効性）' do
       valid_addressess.each do |valid_address|
         user.email = valid_address
-        expect(user).to be_valid
+        expect(user.valid?).to be_truthy
       end
       user.email = mixed_addresse
       user.save

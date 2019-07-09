@@ -7,20 +7,17 @@ RSpec.describe UserRelationship, type: :model do
 
   context '#Validation' do
     it '全属性の有効性' do
-      relation.valid?
-      expect(relation).to be_valid
+      expect(relation.valid?).to be_truthy
     end
 
     it 'Followerの存在性' do
       relation.follower_id = nil
-      relation.valid?
-      expect(relation).not_to be_valid
+      expect(relation.valid?).to be_falsy
     end
 
     it 'Followedの存在性' do
       relation.followed_id = nil
-      relation.valid?
-      expect(relation).not_to be_valid
+      expect(relation.valid?).to be_falsy
     end
   end
 
