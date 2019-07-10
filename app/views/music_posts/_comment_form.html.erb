@@ -1,7 +1,23 @@
-<%= form_with model:MusicComment, url: music_comments_path, locals: true do |f| %>
-  <%= hidden_field_tag :id, @music_post.id %>
-  <div class="field">
-    <%= f.text_area :comment, placeholder: 'コメントを投稿する。' %>
+<button class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#createComment">
+  コメントを投稿する。
+</button>
+<div class="modal fade" id="createComment" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="dialogHeader">投稿コメント</h4>
+      </div>
+      <%= form_with model:@music_comment, url: music_comments_path, locals: true do |f| %>
+        <%= hidden_field_tag :id, @music_post.id %>
+        <div class="modal-body">
+          <%= f.text_area :comment, placeholder: 'コメントを投稿する。' %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
+          <%= f.submit "コメント投稿", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
   </div>
-  <%= f.submit "コメント投稿", class: "btn btn-primary" %>
-<% end %>
+</div>

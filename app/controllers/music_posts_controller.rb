@@ -10,6 +10,7 @@ class MusicPostsController < ApplicationController
   def show
     @music_post = MusicPost.find(params[:id])
     @user = User.find(@music_post.user_id)
+    @music_comment = current_user.music_comments.build
     @music_comments = @music_post.music_comments.includes(:commenter)
   end
 
