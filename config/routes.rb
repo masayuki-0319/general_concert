@@ -17,4 +17,5 @@ Rails.application.routes.draw do
   resources :music_posts,        only: [:index, :show, :create, :destroy]
   resources :music_likes,        only: [:create, :destroy]
   resources :user_relationships, only: [:create, :destroy]
+  resources :music_comments,     only: [:create, :destroy]
 end
