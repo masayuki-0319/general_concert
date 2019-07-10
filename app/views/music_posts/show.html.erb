@@ -6,7 +6,9 @@
   </div>
   <div class="col-9 music_post">
     <%= render @music_post %>
-    <%= render @music_comments %>
+    <span id="music_comment">
+      <%= render @music_comments %>
+    </span>
     <%= render 'comment_form' %>
   </div>
 </div>
