@@ -34,7 +34,7 @@ RSpec.describe MusicCommentsController, type: :controller do
     end
   end
 
-  describe "GET #destroy" do
+  describe "POST #destroy" do
     subject { delete :destroy, params: { id: music.id, music_comment_id: comment.id } }
 
     context 'ログインしている場合' do
