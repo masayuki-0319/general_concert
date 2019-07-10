@@ -1,6 +1,8 @@
-<% if feed_items.present? %>
-  <ol class="microposts" id="microposts">
-    <%= render feed_items %>
-  </ol>
-  <%= will_paginate feed_items %>
-<% end %>
+<ol class="microposts" id="microposts">
+  <% if feed_items.present? %>
+    <div>
+      <%= render feed_items %>
+    </div>
+    <%= will_paginate feed_items %>
+  <% end %>  
+</ol>
