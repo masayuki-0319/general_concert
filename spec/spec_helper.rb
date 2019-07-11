@@ -94,4 +94,15 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
+  config.before(:all, type: :system) do
+    OmniAuth.config.test_mode = true
+    OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+      provider: 'facebook',
+      uid: '1234567',
+      info: {
+        email: 'example@railstutorial.org',
+        name: 'Example User'
+      }
+    })
+  end
 end
