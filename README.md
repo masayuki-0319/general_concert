@@ -2,7 +2,7 @@
 - このアプリケーションは，音楽団体の交流を目的としたオリジナルアプリケーションです。
 - Railsチュートリアルを参考に実装しており，以下の点を主に変更しております。
   - テストをRSpecで実装（--only-failuresオプションも設定）
-    - ControllerSpec, ModelSpec, SystemSpec
+    - ModelSpec, ControllerSpec, SystemSpec
   - Rubocop使用（rubocop-airbnb併用）
   - Bullet使用（N+1問題検出用）
   - DatabaseをMySQLで実装
@@ -17,6 +17,7 @@
 - Youtube動画URL投稿機能（API未使用）
 - ユーザー相互フォロー機能
 - 投稿動画のいいね！機能（お気に入り機能）
-- Ajax（動画投稿，動画削除，相互フォロー，いいね！機能）
+- Ajax（動画投稿，動画削除，相互フォロー，いいね！機能，コメント機能）
 - 投稿動画の検索機能
 - Facebookログイン（devise不使用）
+- 投稿動画のコメント機能（モーダル表示）
