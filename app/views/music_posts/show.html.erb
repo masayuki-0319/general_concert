@@ -2,13 +2,13 @@
 
 <div class="row">
   <div class="col-3">
-    <%= render 'shared/user_info' %>
+    <%= render 'shared/user_info', user: @music_post.user %>
   </div>
   <div class="col-9 music_post">
     <%= render @music_post %>
     <span id="music_comment">
       <%= render @music_comments %>
     </span>
-    <%= render 'comment_form' %>
+    <%= render partial: 'comment_form', locals: { music_comment: @music_comment, music_post: @music_post } %>
   </div>
 </div>

@@ -8,8 +8,8 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title" id="dialogHeader">投稿コメント</h4>
       </div>
-      <%= form_with model:@music_comment, url: music_comments_path, locals: true do |f| %>
-        <%= hidden_field_tag :id, @music_post.id %>
+      <%= form_with model:music_comment, url: music_comments_path, locals: true do |f| %>
+        <%= hidden_field_tag :id, music_post.id %>
         <div class="modal-body">
           <%= f.text_area :comment, placeholder: 'コメントを投稿する。' %>
         </div>

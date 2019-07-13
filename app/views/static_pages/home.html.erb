@@ -2,7 +2,7 @@
 
 <% if logged_in? %>
   <div class="row">
-    <%= render 'shared/sidebar' %>
+    <%= render 'shared/sidebar', user: current_user %>
     <div class="col-md-8">
       <h3>投稿動画一覧</h3>
       <%= render 'shared/feed', feed_items: @feed_items  %>

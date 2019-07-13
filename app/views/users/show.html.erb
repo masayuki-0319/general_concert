@@ -1,8 +1,8 @@
 <% provide(:title, @user.name) %>
 <div class="row">
-  <%= render 'shared/sidebar' %>
+  <%= render 'shared/sidebar', user: @user %>
   <div class="col-md-8">
-    <%= render 'follow_form' if logged_in? %>
+    <%= render 'follow_form', user: @user %>
     <% if @user.music_posts.present? %>
       <h3>投稿数： (<%= @user.music_posts.count %>)</h3>
       <ol class="music_posts">

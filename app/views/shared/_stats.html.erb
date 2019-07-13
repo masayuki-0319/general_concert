@@ -1,20 +1,19 @@
-<% @user ||= current_user %>
 <div class="stats">
-  <a href="<%= following_user_path(@user) %>">
+  <a href="<%= following_user_path user %>">
     <strong id="following" class="stat">
-      <%= @user.following.count %>
+      <%= user.following.count %>
     </strong>
     フォロー人数
   </a>
-  <a href="<%= followers_user_path(@user) %>">
+  <a href="<%= followers_user_path user %>">
     <strong id="followers" class="stat">
-      <%= @user.followers.count %>
+      <%= user.followers.count %>
     </strong>
     フォロワー
   </a>
   <a href="#">
-    <strong id="like-<%= @user.id %>" class="stat">
-      <%= @user.music_likes.count %>
+    <strong id="like-<%= user.id %>" class="stat">
+      <%= user.music_likes.count %>
     </strong>
     いいね！回数
   </a>
