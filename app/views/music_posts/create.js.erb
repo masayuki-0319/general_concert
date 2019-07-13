@@ -1,3 +1,6 @@
+$("#flash").html(
+  "<%= escape_javascript(render('layouts/flash')) %>"
+);
 $("#microposts").prepend(
   "<%= escape_javascript(render @music_post) %>"
 );

@@ -1,0 +1,11 @@
+<% flash.each do |message_type, message| %>
+  <%= content_tag(:div, class: "alert alert-#{message_type}") do %>
+    <%=  message %>
+    <%=  content_tag(:button, "&times;".html_safe, class: "close", id: "close", data: { dissmiss: "alert" }, aria: { hidden: true }) %>
+    <script>
+      document.getElementById("close").onclick = function() {
+        $("#flash").css('display', 'none');
+      };
+    </script>
+  <% end %>
+<% end %>

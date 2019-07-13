@@ -17,7 +17,7 @@ class MusicPostsController < ApplicationController
   def create
     @music_post = current_user.music_posts.build(music_post_params)
     if @music_post.save
-      flash[:success] = '投稿を完了しました。'
+      flash.now[:success] = '投稿を完了しました。'
       respond_to do |format|
         format.html { redirect_to root_path }
         format.js
@@ -30,7 +30,7 @@ class MusicPostsController < ApplicationController
 
   def destroy
     @music_post.destroy
-    flash[:success] = '動画を削除しました。'
+    flash.now[:success] = '動画を削除しました。'
     respond_to do |format|
       format.html { redirect_to request.referrer || root_path }
       format.js
