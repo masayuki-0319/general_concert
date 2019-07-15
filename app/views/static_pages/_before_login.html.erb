@@ -1,11 +1,14 @@
 <div class="center jumbotron">
   <h1>General Concert</h1>
-  <h2>
-    <p>ここは，ゼネラルコンサートのTOPページになります。</p>
-  </h2>
-
-  <%= link_to "今すぐ登録する！", signup_path, class: "btn btn-lg btn-primary" %>
-  <%= link_to "Facebookログイン", "/auth/facebook", class: "btn btn-lg btn-warning" %>
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4 btn-group-vertical center-inline" role="group" aria-label="積み重ねボタングループ">
+      <%= link_to "今すぐ登録する！", signup_path, class: "btn btn-lg btn-primary" %>
+      <br />
+      <%= link_to "通常ログイン", login_path, class: "btn btn-lg btn-success" %>
+      <br />
+      <%= link_to "Facebookログイン", "/auth/facebook", class: "btn btn-lg btn-warning" %>
+    </div>
+  </div>
 </div>
 
 <!-- FacebookLogin(Developersから転記) -->

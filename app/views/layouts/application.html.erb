@@ -4,15 +4,15 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous">
     <%= render 'layouts/shim' %>
   </head>
 
-  <body>
-    <%= render 'layouts/header' %>
+  <body class='top_main <%= "#{controller.controller_name}_controller" + (logged_in? ? "" : " before_login") %>'>
+    <%= render 'layouts/header' if logged_in? %>
     <div class="container">
       <div id="flash">
         <%= render 'layouts/flash' %>

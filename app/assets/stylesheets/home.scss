@@ -1,0 +1,13 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.before_login {
+  background-position: center;
+  background-color: black;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url("/home.jpg");
+  .jumbotron {
+    background-color: rgba(229, 229, 229, 0.5);
+  }
+}

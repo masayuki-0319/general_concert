@@ -1,13 +1,13 @@
 <% provide(:title, '') %>
 
-<% if logged_in? %>
-  <div class="row">
+<div class="row">
+  <% if logged_in? %>
     <%= render 'shared/sidebar', user: current_user %>
     <div class="col-md-8">
       <h3>投稿動画一覧</h3>
       <%= render 'shared/feed', feed_items: @feed_items  %>
     </div>
-  </div>
-<% else %>
-  <%= render 'before_login' %>
-<% end %>
+  <% else %>
+    <%= render 'before_login' %>
+  <% end %>
+</div>

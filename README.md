@@ -1,5 +1,7 @@
-# 【「ゼネラルコンサート」概要】
-このアプリケーションは，音楽団体の交流を目的としたオリジナルアプリケーションです。
+# 【概要】
+- 名称：ゼネラルコンサート
+- 目的：音楽団体をより身近に感じられるような社会を目指して，音楽団体同士の交流を促進し，音楽活動への情熱を高め，集中できる環境を提供可能なシステムを構築する。
+
 ## □ 開発環境等
 - 言語：Ruby2.5.1
 - フレームワーク：Ruby on Rails5.2.3
@@ -43,10 +45,10 @@
 - その他
   - 他のソーシャルログイン
 
-# 【気をつけたポイント】
+# 【気を付けたポイント】
 ## □ コード部分
 - [RSpec：SystemSpecを使用](https://qiita.com/jnchito/items/c7e6e7abf83598a6516d)
-  - RSpecのドキュメントにおいて，フィーチャSpecよりシステムSpecの使用が推奨されているため。
+  - RSpecのドキュメントにおいて，FeatureSpecよりSystemSpecの使用が推奨されるため。
 - [RSpec：失敗したテストだけを対象にできる[--only-failures]オプションを導入](https://blog.piyo.tech/posts/2018-05-16-rspec-only-failures/)
   - テスト増加に伴い，機能実装の度に問題無いテストを何度も実行することが不要な時間であるため。
 - [Gem：Rubocop使用（rubocop-airbnb併用）](https://www.slideshare.net/ssuser21f9f1/rubocop-78362847)
@@ -58,15 +60,15 @@
 - [[Time.current]を使用](https://doruby.jp/users/takeshita/entries/Rails-%E6%99%82%E5%88%BB%E5%87%A6%E7%90%86%E3%81%A7%E3%81%AF%E3%80%81Time-current--Time-zone-local-%3CTimeWithZone%E3%82%AF%E3%83%A9%E3%82%B9%3E-%E3%82%92%E4%BD%BF%E3%81%86)
   - Railsの時刻処理では，[updated_at]と同じTimeWithZoneクラスの使用が推奨されているため。
 - [[javascript_include_tag]の読み込み位置](https://teratail.com/questions/14600)
-  - bodyの閉じタグ直前に移動することで，HTMLやCSSの読み込み及びレンダリングをブロックしないた。
+  - bodyの閉じタグ直前に移動することで，HTMLやCSSの読み込み及びレンダリングをブロックしないため。
 - [部分テンプレートにインスタンス変数の使用回避](https://qiita.com/mom0tomo/items/e1e3fd29729b2d112a48)
   - 部分テンプレートとコントローラの密結合を防止して再利用性を向上させるため。
 
 ## □ 心構え部分
 - [必要最小限のコメント](https://twitter.com/t_wada/status/904916106153828352)
-  - リーダブルコード中の[コードの可読性向上]を重視してコメントを記入した（転送先にある[Why not]は優先度２番目と考えた。）。
+  - リーダブルコード中の[コードの可読性向上]を重視してコメントを使用した（転送先にある[Why not]は優先度２番目と考えた。）。
 - デバッグの重要性
-  - エラー発生時には，サーバーのログとエラーメッセージを参考にして，[debugger]メソッドとRSpecの[save_and_open_page]メソッドを中核にエラーを解消した。
+  - エラー発生時には，サーバーのログとエラーメッセージを参考にして，[debugger]メソッドとRSpecの[save_and_open_page]メソッドを中核にエラーに対処した。
 - テスト駆動開発及び振舞駆動開発の重要性
   - 下記の力を入れた点をご参照願います。
 

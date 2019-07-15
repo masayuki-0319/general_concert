@@ -30,12 +30,14 @@ RSpec.feature 'FollowInterface', type: :system do
   context 'フォロー機能の確認' do
     scenario '他のユーザをフォローする。' do
       visit user_path(another_user)
+      expect(page).to have_button 'フォロー'
       click_on 'フォロー'
       expect(page).to have_button 'フォロー解除'
     end
 
     scenario '他のユーザをフォロー解除する。' do
       visit user_path(other_user)
+      expect(page).to have_button 'フォロー解除'
       click_on 'フォロー解除'
       expect(page).to have_button 'フォロー'
     end
