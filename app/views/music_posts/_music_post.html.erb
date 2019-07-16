@@ -1,16 +1,25 @@
-<li id="music_post-<%= music_post.id %>">
-  <%= link_to gravatar_for(music_post.user, size: 80), music_post.user %>
-  <span class="user"><%= link_to music_post.user.name, music_post.user %><br/ ></span>
-  <span class="timestamp">
-    投稿日時：<%= time_ago_in_words(music_post.created_at) %> ago. <br/ >
-    動画タイトル：<%= link_to music_post.title, music_post_path(music_post) %>
-  </span>
-  <div class="col-2 col-md-4">
-  <% if current_user?(music_post.user) %>
-    <%= link_to '動画を削除', music_post, method: :delete, remote: true, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger delete' %>
-  <% else %>
-    <%= render partial: 'music_posts/like_form', locals: { music_post: music_post } %>
-  <% end %>
+<div class="row post_info" id="music_post-<%= music_post.id %>">
+  <div class="row box_center_vert">
+    <div class="col-md-8">
+      <%= link_to gravatar_for(music_post.user, size: 80), music_post.user %>
+      <span class="timestamp">
+        投稿者名：<%= link_to music_post.user.name, music_post.user %><br/ >
+        投稿日時：<%= time_ago_in_words(music_post.created_at) %> ago. <br/ >
+        タイトル：<%= link_to music_post.title, music_post_path(music_post) %>
+      </span>
+    </div>
+    <div class="col-md-4">
+      <% if current_user?(music_post.user) %>
+        <%= link_to '動画を削除', music_post, method: :delete, remote: true, data: { confirm: '本当に削除しますか？' }, class: 'btn btn-danger delete' %>
+      <% else %>
+        <%= render partial: 'music_posts/like_form', locals: { music_post: music_post } %>
+      <% end %>
+    </div>
   </div>
-  <span class="music_post"><%= music_post.iframe.html_safe %></span>
-</li>
+  <br />
+  <div class="row center">
+    <div class="col-md-12 left music_post">
+      <%= music_post.iframe.html_safe %>
+    </div>
+  </div>
+</div>

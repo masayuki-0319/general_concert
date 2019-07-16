@@ -2,9 +2,9 @@
 <div class="row">
   <%= render 'shared/sidebar', user: @user %>
   <div class="col-md-8">
-    <%= render 'follow_form', user: @user %>
+    <%= render('follow_form', user: @user) unless current_user?(@user) %>
     <% if @user.music_posts.present? %>
-      <h3>投稿数： (<%= @user.music_posts.count %>)</h3>
+      <h3>投稿数：<%= @user.music_posts.count %>件</h3>
       <ol class="music_posts">
         <%= render @music_posts %>
       </ol>

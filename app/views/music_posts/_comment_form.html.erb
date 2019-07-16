@@ -1,4 +1,4 @@
-<button class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#createComment">
+<button class="btn btn-success btn-block" data-toggle="modal" data-target="#createComment">
   コメントを投稿する。
 </button>
 <div class="modal fade" id="createComment" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" aria-hidden="true">
@@ -14,8 +14,8 @@
           <%= f.text_area :comment, placeholder: 'コメントを投稿する。' %>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">キャンセル</button>
-          <%= f.submit "コメント投稿", class: "btn btn-primary" %>
+          <%= f.submit "コメント投稿", class: "btn btn-primary btn-sm btn-block" %>
+          <button type="button" class="btn btn-secondary btn-sm btn-block" data-dismiss="modal">キャンセル</button>
         </div>
       <% end %>
     </div>

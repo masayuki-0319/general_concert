@@ -1,0 +1,29 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.comment {
+  width: 550px;
+  padding: 0 10px;
+  position: relative;
+  .comment_info {
+    float: left;
+  }
+  .comment_box{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #474747;
+    background: whitesmoke;/*背景色*/
+    border-left: double 7px #4ec4d3;/*左線*/
+    border-right: double 7px #4ec4d3;/*右線*/
+    p {
+      margin: 0;
+      padding: 0;
+    }
+    .comment_time {
+      color: #999;
+      text-align: right;
+      margin-bottom:0;
+      float: right;
+    }
+  }
+}

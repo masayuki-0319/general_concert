@@ -1,7 +1,21 @@
 <div id="music_comment-<%= music_comment.id %>">
-  <li>投稿者名：<%= music_comment.commenter.name %></li>
-  <li>コメント：<%= music_comment.comment %></li>
-  <% if music_comment.commenter_id == current_user.id %>
-    <li><%= link_to 'コメント削除', music_comment_path(music_comment), data: { confirm: '本当に削除しますか？' }, method: :delete, remote: true %></li>
-  <% end %>
+  <div class="comment">
+    <div class="col-md-12">
+      <div class="comment_info">
+        <%= gravatar_for(music_comment.commenter, size: 30) %>
+        <strong><%= music_comment.commenter.name %></strong>
+        <% if music_comment.commenter_id == current_user.id %>
+          （<%= link_to 'コメント削除', music_comment_path(music_comment), data: { confirm: '本当に削除しますか？' }, method: :delete, remote: true %>）
+        <% end %>
+      </div>
+      <div class="comment_box">
+        <div class="content">
+          <p><%= music_comment.comment %></p>
+        </div>
+        <div class="comment_time">
+          <%= music_comment.created_at %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
