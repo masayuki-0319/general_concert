@@ -6,7 +6,9 @@
       <br />
       <%= link_to "通常ログイン", login_path, class: "btn btn-lg btn-success" %>
       <br />
-      <%= link_to "Facebookログイン", "/auth/facebook", class: "btn btn-lg btn-warning" %>
+      <%= link_to "/auth/facebook", class: "btn btn-lg btn-social btn-facebook" do %>
+        <span class="fab fa-facebook-f"></span>Facebookでログイン
+      <% end %>
     </div>
   </div>
 </div>
