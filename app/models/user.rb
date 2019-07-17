@@ -27,9 +27,16 @@ class User < ApplicationRecord
   # Omniauth
   def self.find_or_create_from_auth(auth)
     provider = auth[:provider]
-    uid = auth[:uid]
-    email = auth[:info][:email]
-    name = auth[:info][:name]
+    case provider.to_s
+    when 'facebook'
+      uid = auth[:uid]
+      email = auth[:info][:email]
+      name = auth[:info][:name]
+    when 'google_oauth2'
+      uid = auth[:uid]
+      email = auth[:info][:email]
+      name = auth[:info][:name]
+    end
     password = 'password'
     find_or_create_by(email: email) do |user|
       user.provider = provider
