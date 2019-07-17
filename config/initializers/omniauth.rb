@@ -7,6 +7,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       image_aspect_ratio: 'square',
       image_size: 50
     }
+  provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: "user,repo,gist"
 
   # 認証キャンセルする場合等で/auth/failureへリダイレクト
   on_failure do |env|

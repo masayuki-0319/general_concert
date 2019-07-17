@@ -36,6 +36,10 @@ class User < ApplicationRecord
       uid = auth[:uid]
       email = auth[:info][:email]
       name = auth[:info][:name]
+    when 'github'
+      uid = auth[:uid]
+      email = auth[:info][:email]
+      name = auth[:info][:name]
     end
     password = 'password'
     find_or_create_by(email: email) do |user|
