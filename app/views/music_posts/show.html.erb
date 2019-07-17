@@ -3,13 +3,15 @@
 <div class="row">
   <%= render 'shared/sidebar', user: @music_post.user %>
   <div class="col-md-8 music_post">
-    <%= render @music_post %>
-    <div class="row">
-      <h3>【コメント欄】</h3>
-      <span id="music_comment">
-        <%= render @music_comments %>
-      </span>
-      <%= render partial: 'comment_form', locals: { music_comment: @music_comment, music_post: @music_post } %>
-    </div>
+    <ol class="microposts">
+      <%= render @music_post %>
+      <div class="row">
+        <h3>【コメント欄】</h3>
+        <span id="music_comment">
+          <%= render @music_comments %>
+        </span>
+        <%= render partial: 'comment_form', locals: { music_comment: @music_comment, music_post: @music_post } %>
+      </div>
+    </ol>
   </div>
 </div>

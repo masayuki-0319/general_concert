@@ -1,7 +1,7 @@
 <%= form_with model: music_post, remote: true do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-    <%= f.text_area :title, placeholder: "動画のタイトルなど" %>
+    <%= f.text_area :title, placeholder: "動画タイトル" %>
   </div>
   <div class="field">
     <%= f.text_area :iframe, placeholder: "Youtubeの「動画の埋め込み」を貼り付ける。(例：<iframe>~省略~</iframe>)" %>

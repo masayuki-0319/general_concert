@@ -5,7 +5,7 @@
     <%= render('follow_form', user: @user) unless current_user?(@user) %>
     <% if @user.music_posts.present? %>
       <h3>投稿数：<%= @user.music_posts.count %>件</h3>
-      <ol class="music_posts">
+      <ol class="microposts">
         <%= render @music_posts %>
       </ol>
       <%= will_paginate @music_posts %>
