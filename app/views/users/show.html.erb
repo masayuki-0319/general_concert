@@ -2,9 +2,13 @@
 <div class="row">
   <%= render 'shared/sidebar', user: @user %>
   <div class="col-md-8">
-    <%= render('follow_form', user: @user) unless current_user?(@user) %>
+    <%= render('users/follow_form', user: @user) unless current_user?(@user) %>
     <% if @user.music_posts.present? %>
-      <h3>【投稿数：<%= @user.music_posts.count %>件】</h3>
+      <% if controller.action_name == 'show'  %>
+        <h3>【投稿数：<%= @user.music_posts.count %>件】</h3>
+      <% elsif controller.action_name == 'show_like' %>
+        <h3>【お気に入り件数：<%= @user.music_likes.count %>件】</h3>
+      <% end %>
       <ol class="microposts">
         <%= render @music_posts %>
       </ol>

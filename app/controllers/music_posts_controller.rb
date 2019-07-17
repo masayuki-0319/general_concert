@@ -1,5 +1,5 @@
 class MusicPostsController < ApplicationController
-  before_action :logged_in_user,  only: [:index, :show, :create, :destroy]
+  before_action :logged_in_user,  only: [:index, :show, :create, :destroy, :show_like]
   before_action :correct_user,    only: [:destroy]
 
   def index
@@ -35,6 +35,13 @@ class MusicPostsController < ApplicationController
       format.html { redirect_to request.referrer || root_path }
       format.js
     end
+  end
+
+  def show_like
+    @user = User.find(params[:id])
+    music_likes_ids = @user.music_likes.map { |n| n.music_post_id }
+    @music_posts = MusicPost.where(id: music_likes_ids).paginate(page: params[:page]).includes(:user)
+    render 'users/show'
   end
 
   private

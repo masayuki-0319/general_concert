@@ -10,4 +10,11 @@
       <%= render 'shared/music_post_form', music_post: @music_post %>
     </section>
   <% end %>
+  <% if @users.present? %>
+    <div class="user_avatars">
+      <% @users.each do |user| %>
+        <%= link_to gravatar_for(user, size: 30), user %>
+      <% end %>
+    </div>
+  <% end %>
 </aside>

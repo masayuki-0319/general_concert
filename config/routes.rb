@@ -14,7 +14,11 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :music_posts,        only: [:index, :show, :create, :destroy]
+  resources :music_posts,        only: [:index, :show, :create, :destroy] do
+    member do
+      get :show_like
+    end
+  end
   resources :music_likes,        only: [:create, :destroy]
   resources :user_relationships, only: [:create, :destroy]
   resources :music_comments,     only: [:create, :destroy]

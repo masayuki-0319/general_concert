@@ -53,7 +53,7 @@ RSpec.feature 'UsersLogin', type: :system do
     context 'ユーザーが未登録の場合，' do
       scenario 'Facebookログインが成功する。' do
         visit root_path
-        click_on 'Facebookログイン'
+        click_on 'Facebookでログイン'
         expect(current_path).to eq user_path(User.last)
         expect(page).to have_content 'Facebookログインしました。'
         expect(page).to have_content 'Example User'
@@ -65,7 +65,7 @@ RSpec.feature 'UsersLogin', type: :system do
 
       scenario 'Facebookログインが成功する。' do
         visit root_path
-        click_on 'Facebookログイン'
+        click_on 'Facebookでログイン'
         expect(current_path).to eq user_path(User.last)
         expect(page).to have_content 'Facebookログインしました。'
         expect(page).to have_content 'Example User'
