@@ -1,6 +1,6 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
-  provider :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'],
+  provider :google_oauth2, '440617550175-cu80dsifffavbt21kg70s8agngl5e276.apps.googleusercontent.com', ENV['GOOGLE_CLIENT_SECRET'],
     {
       scope: 'userinfo.email, userinfo.profile, http://gdata.youtube.com',
       prompt: 'select_account',
