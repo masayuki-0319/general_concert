@@ -41,7 +41,7 @@ class User < ApplicationRecord
       email = auth[:info][:email]
       name = auth[:info][:name]
     end
-    password = 'password'
+    password = SecureRandom.urlsafe_base64
     find_or_create_by(email: email) do |user|
       user.provider = provider
       user.uid = uid
