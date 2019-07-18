@@ -3,7 +3,7 @@
   <%= render 'shared/sidebar', user: @user %>
   <div class="col-md-8">
     <%= render('users/follow_form', user: @user) unless current_user?(@user) %>
-    <% if @user.music_posts.present? %>
+    <% if @music_posts.present? %>
       <% if controller.action_name == 'show'  %>
         <h3>【投稿数：<%= @user.music_posts.count %>件】</h3>
       <% elsif controller.action_name == 'show_like' %>

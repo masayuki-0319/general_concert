@@ -34,6 +34,8 @@ RSpec.feature 'MusicLikeInterface', type: :system do
       test_link = find(:xpath, "//a[contains(@href,'music_posts/1/show_like')]")
       test_link.click
       expect(current_path).to eq show_like_music_post_path(user)
+      expect(page).to have_content other_music.title
+      expect(page).to have_selector 'iframe'
     end
   end
 end
