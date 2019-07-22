@@ -1,12 +1,12 @@
 # 【概要】
 - 名称：ゼネラルコンサート
-- 目的：音楽団体をより身近に感じられるような社会を目指して，音楽団体同士の交流を促進し，音楽活動への情熱を高め，集中できる環境を提供可能なシステムを構築する。
+- 目的：音楽団体をより身近に感じられるような社会を目指して，音楽団体同士の交流を促進し，音楽活動への情熱を高め，やりたいことに集中できる環境を提供する（開発ロードマップは，関連リンクの開発コンセプトを御確認ください。）。
 
 ## □ 開発環境等
-- 言語：Ruby2.5.1
-- フレームワーク：Ruby on Rails5.2.3
+- 言語：Ruby（2.5.1）
+- フレームワーク：Ruby on Rails（5.2.3）
 - データベース：MySQL
-- テスト環境：RSpec（ModelSpec, ControlerSpec, SystemSpecを記述）
+- テスト環境：RSpec（ModelSpec, ControllerSpec, SystemSpecを記述）
 - 本番環境：Heroku
 - バージョン管理：Git
 - リポジトリ管理：Github
@@ -15,44 +15,28 @@
 - [本番環境](https://general-concert-0319.herokuapp.com/)
 - [開発コンセプト](https://qiita.com/Moo_Moo_Farm/items/88e829c24e0c0f11c6b5)
 
-# 【機能】
-## □ 実装済み
+# 【実装機能】
 - 基本機能
-  - ユーザーCRUD
+  - ユーザーCRUD（devise不使用）
   - ソーシャルログイン（Facebook, Google, Github）
   - ユーザー相互フォロー
-  - Ajax（動画投稿及び削除, 相互フォロー, いいね！機能, コメント, フラッシュメッセージ）
+  - Ajax（動画投稿及び削除, 相互フォロー, 動画お気に入り, 動画コメント, フラッシュメッセージ）
 - 機能１：演奏動画の視聴
   - Youtube動画URL投稿及び削除
-  - 動画のお気に入り（いいね！機能）
+  - 動画のお気に入り
   - 動画の検索
   - 動画のコメント（モーダル表示付属）
-
-## □ 実装予定
-- 機能１：演奏動画の視聴
-  - 動画のタグ検索
-  - 動画の評価（例：星の５段階評価）
-  - 新着動画の表示
-  - YoutubeのAPIを使用
-- 機能２：音楽団体とユーザーの交流
-  - 掲示板
-  - ルームチャット
-- 機能３：コンサート開催情報
-  - 所属団体の登録及びユーザーとの関連付け
-  - コンサートに係る登録及び所属団体との関連付け
-  - コンサートの開催場所に係るGoogleMapのAPIを使用
-  - コンサートの開催時期に係るカレンダーの使用
 
 # 【気を付けたポイント】
 ## □ コード部分
 - [RSpec：SystemSpecを使用](https://qiita.com/jnchito/items/c7e6e7abf83598a6516d)
   - RSpecのドキュメントにおいて，FeatureSpecよりSystemSpecの使用が推奨されるため。
 - [RSpec：失敗したテストだけを対象にできる[--only-failures]オプションを導入](https://blog.piyo.tech/posts/2018-05-16-rspec-only-failures/)
-  - テスト増加に伴い，機能実装の度に問題無いテストを何度も実行することが不要な時間であるため。
+  - テスト増加に伴い，機能実装の試行錯誤時に問題無いテストを何度も実行することが不要な時間であるため。
 - [Gem：Rubocop使用（rubocop-airbnb併用）](https://www.slideshare.net/ssuser21f9f1/rubocop-78362847)
   - コードスタイルの統一による可読性向上のため。
 - [Gem：Bulletを使用してN+1問題の解決](https://qiita.com/hirotakasasaki/items/e0be0b3fd7b0eb350327)
-  - N+1問題を解消しておくことで，データ量が膨大になる際のSQLの将来的なパフォーマンスを改善するため。
+  - N+1問題を解消しておくことで，データ量が膨大になる際のSQLのパフォーマンスを改善するため。
 - [[form_with]を使用](https://qiita.com/hmmrjn/items/24f3b8eade206ace17e2)
   - [form_for]と[form_tag]が将来的に[form_with]へ将来的に置換するため。
 - [[Time.current]を使用](https://doruby.jp/users/takeshita/entries/Rails-%E6%99%82%E5%88%BB%E5%87%A6%E7%90%86%E3%81%A7%E3%81%AF%E3%80%81Time-current--Time-zone-local-%3CTimeWithZone%E3%82%AF%E3%83%A9%E3%82%B9%3E-%E3%82%92%E4%BD%BF%E3%81%86)
@@ -66,7 +50,7 @@
 - [必要最小限のコメント](https://twitter.com/t_wada/status/904916106153828352)
   - リーダブルコード中の[コードの可読性向上]を重視してコメントを使用した（転送先にある[Why not]は優先度２番目と考えた。）。
 - デバッグの重要性
-  - エラー発生時には，サーバーのログとエラーメッセージを参考にして，[debugger]メソッドとRSpecの[save_and_open_page]メソッドを中核にエラーに対処した。
+  - エラー発生時には，サーバーのログとエラーメッセージを参考にして，[debugger]メソッドと[save_and_open_page]メソッドを中核にエラーに対処した。
 - テスト駆動開発及び振舞駆動開発の重要性
   - 下記の力を入れた点をご参照願います。
 
