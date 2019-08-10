@@ -1,0 +1,13 @@
+<% provide(:title, '') %>
+
+<div class="row">
+  <% if logged_in? %>
+    <%= render 'shared/sidebar', user: current_user %>
+    <div class="col-md-8">
+      <h3>【フィード】</h3>
+      <%= render 'shared/feed', feed_items: @feed_items  %>
+    </div>
+  <% else %>
+    <%= render 'before_login' %>
+  <% end %>
+</div>
