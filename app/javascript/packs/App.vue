@@ -11,8 +11,8 @@
 </template>
 
 <script>
-  import Header from './packs/components/Header.vue'
-  import Footer from './packs/components/Footer.vue'
+  import Header from './components/Header.vue'
+  import Footer from './components/Footer.vue'
 
   export default {
     name: 'MyApp',
