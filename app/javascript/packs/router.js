@@ -2,8 +2,8 @@ import Vue        from 'vue/dist/vue.esm.js'
 import VueRouter  from 'vue-router'
 import Page1      from './pages/Page1.vue'
 import Page2      from './pages/Page2.vue'
-import About      from './pages/About.vue'
-import Tos        from './pages/Tos.vue'
+import About      from './pages/static_pages/About.vue'
+import Tos        from './pages/static_pages/Tos.vue'
 
 Vue.use(VueRouter)
 

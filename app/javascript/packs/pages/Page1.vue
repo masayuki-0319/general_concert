@@ -2,10 +2,9 @@
   <div class="page1">
     <h1>{{ msg }}</h1>
     <div class="message">
-    <p class="page1_message_inner">これはページ1です。</p><br>
-    ここが他のページに入れ替わります。<br>
-    この中はふつーのHTMLで記載できます。<br>
-    スタイルシートのスコープなんてきにしなくてへいき。<br>
+      <p class="page1_message_inner">
+        現在，ViewをVue.jsにリプレイス中です。
+      </p>
     </div>
     <router-link to="/page2">次のページへ</router-link>
   </div>
