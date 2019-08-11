@@ -11,3 +11,10 @@
     <%= render 'before_login' %>
   <% end %>
 </div>
+
+<!-- Rendered by vue JS -->
+<div id='app'>
+  <router-view/>
+</div>
+<%= javascript_pack_tag 'application' %>
+<%= stylesheet_pack_tag 'application' %>

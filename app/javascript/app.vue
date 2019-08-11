@@ -1,22 +1,37 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
+    <Header msg="This is common header rendered by vue's single file components"></Header>
+    <div id="nav">
+    </div>
+    <router-link to="/">Page1</router-link> |
+    <router-link to="/page2">Page2</router-link>
+    <router-view/>
+    <Footer msg="This is common footer rendered by vue's single file components"></Footer>
   </div>
 </template>
 
 <script>
-export default {
-  data: function () {
-    return {
-      message: "Hello Vue!"
+  import Header from './packs/components/Header.vue'
+  import Footer from './packs/components/Footer.vue'
+
+  export default {
+    name: 'MyApp',
+    props: {
+      msg: String
+    },
+    components: {
+      Header,Footer
     }
   }
-}
 </script>
 
-<style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
-}
+<style>
+  #app {
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+    margin-top: 60px;
+  }
 </style>
