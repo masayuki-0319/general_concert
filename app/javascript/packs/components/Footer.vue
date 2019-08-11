@@ -1,6 +1,6 @@
 <template>
   <footer>
-    <span>General Concert New {{displayDate}}</span>
+    <span>General Concert New {{ displayDate }}</span>
     <nav>
       <ul>
         <li><router-link to='/'>ホーム</router-link></li>

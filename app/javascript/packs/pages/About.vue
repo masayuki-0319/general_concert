@@ -1,0 +1,15 @@
+<template>
+  <div class="center jumbotron">
+    <h1>本サービスについて</h1>
+    <p>ここは，ゼネラルコンサートの概要ページになります。</p>
+    <div>
+      <a href='https://qiita.com/Moo_Moo_Farm/items/88e829c24e0c0f11c6b5' class='btn btn-link'>
+        作成情報
+      </a>
+    </div>
+  </div>
+</template>
+
+<script></script>
+
+<style scoped></style>
