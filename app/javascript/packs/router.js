@@ -1,17 +1,17 @@
 import Vue        from 'vue/dist/vue.esm.js'
 import VueRouter  from 'vue-router'
-import Page1      from './pages/Page1.vue'
-import Page2      from './pages/Page2.vue'
+import Home       from './pages/static_pages/Home.vue'
 import About      from './pages/static_pages/About.vue'
 import Tos        from './pages/static_pages/Tos.vue'
+import UsersNew   from './pages/users/New.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
-  { path: '/',        component: Page1 },
-  { path: '/page2',   component: Page2 },
+  { path: '/',        component: Home },
   { path: '/about',   component: About },
-  { path: '/tos',     component: Tos }
+  { path: '/tos',     component: Tos },
+  { path: '/signup',  component: UsersNew },
 ];
 
 export default new VueRouter({ routes });

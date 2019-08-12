@@ -3,13 +3,14 @@
 - 目的：音楽団体をより身近に感じられるような社会を目指して，音楽団体同士の交流を促進し，音楽活動への情熱を高め，やりたいことに集中できる環境を提供する（開発ロードマップは，関連リンクの開発コンセプトを御確認ください。）。
 
 ## □ 開発環境等
-- 言語：Ruby（2.5.1）
-- フレームワーク：Ruby on Rails（5.2.3）
+- 言語：Ruby, Javascript
+- フロントエンド：Vue.js(作業中)
+- バックエンド：Ruby on Rails
 - データベース：MySQL
 - テスト環境：RSpec（ModelSpec, ControllerSpec, SystemSpecを記述）
 - 本番環境：Heroku
 - バージョン管理：Git
-- リポジトリ管理：Github
+- リポジトリ管理：GitHub
 
 ## □ 関連リンク
 - [本番環境](https://general-concert-0319.herokuapp.com/)
