@@ -1,6 +1,6 @@
 <template>
   <div class="center jumbotron">
-    <h1 style="font-size:80px; color:red">上段は未完成SPA</h1>
+    <h1 style="font-size:80px; color:red">未完成SPA</br>（ログイン前のみ実装）</h1>
     <h1>General Concert</h1>
     <div class="row">
       <div class="col-md-4 col-md-offset-4 btn-group-vertical center-inline" role="group" aria-label="積み重ねボタングループ">
