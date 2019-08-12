@@ -8,6 +8,9 @@
       <%= render 'shared/feed', feed_items: @feed_items  %>
     </div>
   <% else %>
+    <div id='app'>
+      <router-view/>
+    </div>
     <%= render 'before_login' %>
   <% end %>
 </div>

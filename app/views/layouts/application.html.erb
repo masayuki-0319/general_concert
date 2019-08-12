@@ -17,9 +17,6 @@
       <div id="flash">
         <%= render 'layouts/flash' %>
       </div>
-      <div id='app'>
-        <router-view/>
-      </div>
       <%= yield %>
       <%= debug(params) if Rails.env.development? %>
     </div>

@@ -4,19 +4,19 @@
     <h1>General Concert</h1>
     <div class="row">
       <div class="col-md-4 col-md-offset-4 btn-group-vertical center-inline" role="group" aria-label="積み重ねボタングループ">
-        <router-link to='/signup' class="btn btn-lg btn-primary">今すぐ登録する！</router-link>
+        <a href="/signup" class="btn btn-lg btn-primary">今すぐ登録する！</a>
         <br />
-        <%= link_to "通常ログイン", login_path, class: "btn btn-lg btn-success" %>
+        <a href="/login" class="btn btn-lg btn-success">通常ログイン</a>
         <br />
-        <%= link_to "/auth/facebook", class: "btn btn-lg btn-social btn-facebook" do %>
+        <a href="/auth/facebook" class="btn btn-lg btn-social btn-facebook">
           <span class="fab fa-facebook-f"></span>Facebookでログイン
-        <% end %>
-        <%= link_to "/auth/google_oauth2", class: "btn btn-lg btn-social btn-google" do %>
+        </a>
+        <a href="/auth/google" class="btn btn-lg btn-social btn-google">
           <span class="fab fa-google-plus-g"></span>Googleでログイン
-        <% end %>
-        <%= link_to "/auth/github", class: "btn btn-lg btn-social btn-github" do %>
+        </a>
+        <a href="/auth/github" class="btn btn-lg btn-social btn-github">
           <span class="fab fa-github"></span>Githubでログイン
-        <% end %>
+        </a>
       </div>
     </div>
   </div>
