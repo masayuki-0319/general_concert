@@ -4,8 +4,10 @@
     <h1>General Concert</h1>
     <div class="row">
       <div class="col-md-4 col-md-offset-4 btn-group-vertical center-inline" role="group" aria-label="積み重ねボタングループ">
+        <router-link to="/signup" class="btn btn-lg btn-primary">今すぐ登録する！（SPA ver.）</router-link>
         <a href="/signup" class="btn btn-lg btn-primary">今すぐ登録する！</a>
         <br />
+        <router-link to="/login" class="btn btn-lg btn-success">通常ログイン(SPA ver.)</router-link>
         <a href="/login" class="btn btn-lg btn-success">通常ログイン</a>
         <br />
         <a href="/auth/facebook" class="btn btn-lg btn-social btn-facebook">

@@ -1,6 +1,6 @@
 <template>
   <div class="jumbotron">
-    <h1>新規登録</h1>
+    <h1>新規登録（未完成）</h1>
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
         <form id="user-form" action="/signup" method="post">

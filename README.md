@@ -4,7 +4,7 @@
 
 ## □ 開発環境等
 - 言語：Ruby, Javascript
-- フロントエンド：Vue.js(作業中)
+- フロントエンド：Vue.js(作業中：[進捗状況](https://github.com/masayuki-0319/general_concert/projects/4))
 - バックエンド：Ruby on Rails
 - データベース：MySQL
 - テスト環境：RSpec（ModelSpec, ControllerSpec, SystemSpecを記述）
